@@ -8,6 +8,7 @@ RSpec.describe Job, type: :model do
   it { should validate_presence_of(:end_date) }
   it { should validate_presence_of(:skills) }
   it { is_expected.to validate_presence_of :status }
+  it { is_expected.to belong_to :recruiter }
 
 
   it 'should validate end_date is after start_date' do
