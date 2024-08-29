@@ -1,9 +1,7 @@
 module AuthHelpers
-  def generate_jwt(recruiter)
-    JsonWebTokenInteractor.call(action: :encode, payload: { recruiter_id: recruiter.id }).token
+  def authenticate_recruiter(recruiter)
+    payload = { recruiter_id: recruiter.id }
+    result = JsonWebTokenInteractor.call(action: :encode, payload: payload)
+    result.token
   end
-end
-
-RSpec.configure do |config|
-  config.include AuthHelpers
 end

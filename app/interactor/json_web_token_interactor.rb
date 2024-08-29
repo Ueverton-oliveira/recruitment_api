@@ -23,8 +23,7 @@ class JsonWebTokenInteractor
 	end
 
 	def decode(token)
-		JWT.decode(token, SECRET_KEY)[0]
-	rescue
-		nil
+		decoded = JWT.decode(token, SECRET_KEY)[0]
+    HashWithIndifferentAccess.new decoded
 	end
 end

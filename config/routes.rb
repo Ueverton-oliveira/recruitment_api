@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :recruiters
   namespace :api do
     namespace :v1 do
       namespace :recruiter do
@@ -10,9 +11,9 @@ Rails.application.routes.draw do
         resources :jobs, only: [:index, :show]
         resources :submissions, only: [:create]
       end
-
-      post 'auth/login', to: 'authentication#login'
-      delete 'auth/logout', to: 'authentication#logout'
     end
   end
+
+  post '/auth/login', to: 'authentication#login'
+  get '/*a', to: 'application#not_found'
 end

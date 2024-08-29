@@ -2,6 +2,8 @@ module Api
   module V1
     module Recruiter
       class RecruitersController < ApplicationController
+        before_action :authorize_request
+
         def index
           @recruiters = ::Recruiter.all
           render json: @recruiters

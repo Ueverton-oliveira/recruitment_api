@@ -1,4 +1,5 @@
 class Api::V1::Recruiter::JobsController < ApplicationController
+  before_action :authorize_request
   before_action :set_job, only: [:show, :update, :destroy]
 
   def index
