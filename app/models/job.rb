@@ -1,4 +1,6 @@
 class Job < ApplicationRecord
+  include Searchable
+
   # Associations
   belongs_to :recruiter
 
@@ -6,10 +8,7 @@ class Job < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :recruiter_id, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :status, presence: true
-  validates :skills, presence: true
+  
 
   # Custom validation to ensure end_date is after start_date
   validate :end_date_after_start_date
